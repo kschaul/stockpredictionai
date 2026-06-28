@@ -33,6 +33,26 @@ implied advance probability matches the blended probability, given a match
 goal-total prior (µ ≈ 2.3–2.8 set by the teams' attacking/defensive profiles).
 The **modal** (most likely) scoreline is reported, plus the runner-up score.
 
+### Why the scorelines look low (mode ≠ mean)
+
+A common and fair question: *"1–0/2–0 looks low vs the group stage — are the
+bookies really expecting that few goals?"* No. Two things are being confused:
+
+- The **most likely single scoreline (the mode)** is *always* low. Goals are rare,
+  discrete (Poisson) events, so probability is spread thinly across dozens of
+  scorelines — no single exact score tops ~12–21%. The mode is 1–0 / 1–1 / 2–0
+  even when a game is expected to be open.
+- The **expected (average) total goals** is a different, higher number. This
+  model expects **≈2.3–2.8 goals per match (avg ≈2.55)** — right where bookmakers
+  set their **Over/Under "match total" lines (2.5–3.0)**. In fact, **P(3 or more
+  goals) is ~40–53% in every tie** (shown per match below). So the market and the
+  model agree there will be goals; the single-scoreline headline just hides it.
+
+Also note **knockout football is structurally lower-scoring than the group stage**
+(more caution, game-management when ahead, weaker opponents sitting deep, fear of
+elimination). The 2026 group stage was a goal-fest (~3.0/game); a step down in
+single-elimination is expected — by the bookies too.
+
 **Confidence**: High = blended ≥78%; Med = ≥66%; Low = closer than that, or the
 three angles disagree materially.
 
@@ -60,24 +80,27 @@ accuracy is **~80–85%** — i.e. expect roughly **2–3 of the 16 favorites to
 
 ## Summary table — all 16 matches
 
-| # | Match | Predicted to advance | Advance prob | Most likely score | Conf. |
-|---|---|---|---|---|---|
-| 1 | Canada vs South Africa | **Canada** | 75% | 1–0 | Med |
-| 2 | Brazil vs Japan | **Brazil** | 73% | 1–0 | Med |
-| 3 | Germany vs Paraguay | **Germany** | 85% | 2–0 | High |
-| 4 | Netherlands vs Morocco | **Netherlands** | 63% | 1–1 (NED on pens) | Low |
-| 5 | Mexico vs Ecuador | **Mexico** | 69% | 1–0 | Med |
-| 6 | Norway vs Ivory Coast | **Norway** | 65% | 1–1 (NOR on pens) | Low |
-| 7 | France vs Sweden | **France** | 87% | 2–0 | High |
-| 8 | USA vs Bosnia & Herz. | **USA** | 85% | 2–0 | Med |
-| 9 | England vs Congo DR | **England** | 90% | 2–0 | High |
-| 10 | Belgium vs Senegal | **Belgium** | 66% | 1–0 | Med |
-| 11 | Spain vs Austria | **Spain** | 87% | 2–0 | High |
-| 12 | Portugal vs Croatia | **Portugal** | 65% | 1–0 | Low |
-| 13 | Switzerland vs Algeria | **Switzerland** | 73% | 1–0 | Med |
-| 14 | Egypt vs Australia | **Coin-flip** (model: Australia 52 / Egypt 48; market: Egypt) | ~50% | 1–1 (pens) | Low |
-| 15 | Argentina vs Cape Verde | **Argentina** | 95% | 2–0 | High |
-| 16 | Colombia vs Ghana | **Colombia** | 79% | 1–0 | Med |
+"Most likely score" is the single modal scoreline; "Exp. goals" is the model's
+expected **total** goals (≈ the bookmaker Over/Under line) with P(3+ goals).
+
+| # | Match | Predicted to advance | Advance prob | Most likely score | Exp. goals (P 3+) | Conf. |
+|---|---|---|---|---|---|---|
+| 1 | Canada vs South Africa | **Canada** | 75% | 1–0 | 2.4 (43%) | Med |
+| 2 | Brazil vs Japan | **Brazil** | 73% | 1–0 | 2.7 (51%) | Med |
+| 3 | Germany vs Paraguay | **Germany** | 85% | 2–0 | 2.6 (48%) | High |
+| 4 | Netherlands vs Morocco | **Netherlands** | 63% | 1–1 (NED on pens) | 2.5 (46%) | Low |
+| 5 | Mexico vs Ecuador | **Mexico** | 69% | 1–0 | 2.3 (40%) | Med |
+| 6 | Norway vs Ivory Coast | **Norway** | 65% | 1–1 (NOR on pens) | 2.6 (48%) | Low |
+| 7 | France vs Sweden | **France** | 87% | 2–0 | 2.8 (53%) | High |
+| 8 | USA vs Bosnia & Herz. | **USA** | 85% | 2–0 | 2.6 (48%) | Med |
+| 9 | England vs Congo DR | **England** | 90% | 2–0 | 2.6 (48%) | High |
+| 10 | Belgium vs Senegal | **Belgium** | 66% | 1–0 | 2.5 (46%) | Med |
+| 11 | Spain vs Austria | **Spain** | 87% | 2–0 | 2.8 (53%) | High |
+| 12 | Portugal vs Croatia | **Portugal** | 65% | 1–0 | 2.5 (46%) | Low |
+| 13 | Switzerland vs Algeria | **Switzerland** | 73% | 1–0 | 2.3 (40%) | Med |
+| 14 | Egypt vs Australia | **Coin-flip** (model: Australia 52 / Egypt 48; market: Egypt) | ~50% | 1–1 (pens) | 2.3 (40%) | Low |
+| 15 | Argentina vs Cape Verde | **Argentina** | 95% | 2–0 | 2.8 (53%) | High |
+| 16 | Colombia vs Ghana | **Colombia** | 79% | 1–0 | 2.5 (46%) | Med |
 
 **Upset / coin-flip watch:** Egypt–Australia (only match where the model and the
 bookies disagree on the favorite), Netherlands–Morocco, Norway–Ivory Coast,
@@ -98,6 +121,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Canada 61% · Draw 24% · South Africa 15%
 - **Predicted score: Canada 1–0** (runner-up 2–0). Advance: **Canada 75%**.
+- **Exp. total goals ≈ 2.4** · P(3+)=43% · top scorelines: 1–0 (15%), 2–0 (13%), 1–1 (11%).
 - *Rationale:* Co-host Canada has the ELO edge and a big ranking gap; South Africa
   over-performed to reach the last 32 but lacks the cutting edge. Low-scoring
   Canada win expected.
@@ -109,6 +133,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Brazil 60% · Draw 23% · Japan 18%
 - **Predicted score: Brazil 1–0** (runner-up 2–0). Advance: **Brazil 73%**.
+- **Exp. total goals ≈ 2.7** · P(3+)=51% · top scorelines: 1–0 (12%), 2–0 (11%), 1–1 (11%).
 - *Rationale:* All three angles agree. Japan are the most dangerous "small"
   favorite-killer in the field (pace, pressing), so a one-goal margin and real
   upset risk; Brazil's quality should still tell.
@@ -120,6 +145,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Germany 74% · Draw 18% · Paraguay 8%
 - **Predicted score: Germany 2–0** (runner-up 1–0). Advance: **Germany 85%**.
+- **Exp. total goals ≈ 2.6** · P(3+)=48% · top scorelines: 2–0 (16%), 1–0 (15%), 3–0 (11%).
 - *Rationale:* Class gap is large; Paraguay are organized and hard to break down,
   capping the margin rather than the outcome.
 
@@ -130,6 +156,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Netherlands 48% · Draw 26% · Morocco 26%
 - **Predicted score: 1–1** → Netherlands on penalties (runner-up 1–0 NED). Advance: **Netherlands 63%**.
+- **Exp. total goals ≈ 2.5** · P(3+)=46% · top scorelines: 1–1 (12%), 1–0 (12%), 2–1 (9%).
 - *Rationale:* A 2022 semifinalist in Morocco vs a top-6 Dutch side — genuine
   toss-up. Monterrey heat and Morocco's resilience point to a tight, low-margin
   game that could go the distance.
@@ -141,6 +168,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Mexico 54% · Draw 26% · Ecuador 20%
 - **Predicted score: Mexico 1–0** (runner-up 1–1). Advance: **Mexico 69%**.
+- **Exp. total goals ≈ 2.3** · P(3+)=40% · top scorelines: 1–0 (15%), 1–1 (12%), 2–0 (11%).
 - *Rationale:* **Altitude + home crowd at the Azteca** is the swing factor — Mexico
   hadn't conceded in the group and are nearly unbeaten there. Ecuador defend well
   and travel + thin air hurt them, so a narrow Mexico win.
@@ -152,6 +180,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Norway 50% · Draw 25% · Ivory Coast 25%
 - **Predicted score: 1–1** → Norway on penalties (runner-up 1–0 NOR). Advance: **Norway 65%**.
+- **Exp. total goals ≈ 2.6** · P(3+)=48% · top scorelines: 1–1 (12%), 1–0 (12%), 2–1 (9%).
 - *Rationale:* Haaland gives Norway the higher ceiling and ranking edge, but Ivory
   Coast's athleticism makes this close — extra time is live.
 
@@ -162,6 +191,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** France 78% · Draw 16% · Sweden 7%
 - **Predicted score: France 2–0** (runner-up 1–0). Advance: **France 87%**.
+- **Exp. total goals ≈ 2.8** · P(3+)=53% · top scorelines: 2–0 (16%), 1–0 (14%), 3–0 (12%).
 - *Rationale:* Tournament co-favorite vs a third-placed qualifier; France's depth
   is overwhelming.
 
@@ -172,6 +202,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** USA 74% · Draw 18% · Bosnia 8%
 - **Predicted score: USA 2–0** (runner-up 1–0). Advance: **USA 85%**.
+- **Exp. total goals ≈ 2.6** · P(3+)=48% · top scorelines: 2–0 (16%), 1–0 (15%), 3–0 (11%).
 - *Rationale:* Co-host on home soil with the larger ranking gap; the ELO model is
   more cautious (Bosnia have danger men), hence Medium not High confidence.
 
@@ -182,6 +213,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** England 81% · Draw 14% · Congo DR 4%
 - **Predicted score: England 2–0** (runner-up 1–0). Advance: **England 90%**.
+- **Exp. total goals ≈ 2.6** · P(3+)=48% · top scorelines: 2–0 (19%), 1–0 (17%), 3–0 (14%).
 - *Rationale:* Strongest favorite of the round alongside Argentina; comfortable.
 
 ### 10. Belgium vs Senegal — Jul 1, Lumen Field (Seattle)
@@ -191,6 +223,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Belgium 51% · Draw 26% · Senegal 23%
 - **Predicted score: Belgium 1–0** (runner-up 1–1). Advance: **Belgium 66%**.
+- **Exp. total goals ≈ 2.5** · P(3+)=46% · top scorelines: 1–0 (13%), 1–1 (12%), 2–0 (10%).
 - *Rationale:* Belgium have more individual quality; Senegal's power and pace make
   this one of the tighter "favorite" games — upset is plausible.
 
@@ -201,6 +234,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Spain 77% · Draw 16% · Austria 7%
 - **Predicted score: Spain 2–0** (runner-up 1–0). Advance: **Spain 87%**.
+- **Exp. total goals ≈ 2.8** · P(3+)=53% · top scorelines: 2–0 (16%), 1–0 (14%), 3–0 (12%).
 - *Rationale:* Reigning Euro champions and tournament co-favorite; Austria are
   organized but outclassed.
 
@@ -211,6 +245,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Portugal 50% · Draw 26% · Croatia 25%
 - **Predicted score: Portugal 1–0** (runner-up 1–1). Advance: **Portugal 65%**.
+- **Exp. total goals ≈ 2.5** · P(3+)=46% · top scorelines: 1–0 (12%), 1–1 (12%), 2–0 (9%).
 - *Rationale:* The marquee toss-up — Portugal's squad depth vs Croatia's
   tournament savvy and midfield control. Real extra-time risk.
 
@@ -221,6 +256,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Switzerland 58% · Draw 25% · Algeria 17%
 - **Predicted score: Switzerland 1–0** (runner-up 2–0). Advance: **Switzerland 73%**.
+- **Exp. total goals ≈ 2.3** · P(3+)=40% · top scorelines: 1–0 (16%), 2–0 (13%), 1–1 (11%).
 - *Rationale:* Swiss tournament reliability and ranking edge; Algeria can frustrate,
   so a low-scoring Swiss win.
 
@@ -232,6 +268,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 - **Regulation 1X2:** Egypt 36% · Draw 28% · Australia 36%
 - **Predicted score: 1–1** → penalties. Advance: essentially **50/50** (model edges
   **Australia 52%**, the bookies edge **Egypt ~55%**).
+- **Exp. total goals ≈ 2.3** · P(3+)=40% · top scorelines: 1–1 (13%), 1–0 (12%), 0–1 (12%).
 - *Rationale:* **The one match where the angles disagree.** The market trusts Salah
   and Egypt; ELO and the FIFA ranking favor Australia. Treat as a true coin-flip
   most likely decided in extra time or on penalties. Lowest-confidence call of the
@@ -244,6 +281,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Argentina 90% · Draw 9% · Cape Verde 1%
 - **Predicted score: Argentina 2–0** (runner-up 3–0). Advance: **Argentina 95%**.
+- **Exp. total goals ≈ 2.8** · P(3+)=53% · top scorelines: 2–0 (21%), 3–0 (19%), 1–0 (16%).
 - *Rationale:* Reigning champions vs debutants who advanced on three draws — the
   safest pick in the bracket; only the margin is in question.
 
@@ -254,6 +292,7 @@ the blended advance probability, the regulation result split, and the scoreline.
 
 - **Regulation 1X2:** Colombia 66% · Draw 21% · Ghana 12%
 - **Predicted score: Colombia 1–0** (runner-up 2–0). Advance: **Colombia 79%**.
+- **Exp. total goals ≈ 2.5** · P(3+)=46% · top scorelines: 1–0 (15%), 2–0 (14%), 1–1 (10%).
 - *Rationale:* Colombia's ELO and ranking edge are sizeable; Ghana qualified as a
   third-placed team and are the weaker side, though dangerous on the break.
 
