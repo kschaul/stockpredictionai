@@ -1,7 +1,12 @@
-# 2026 FIFA World Cup — Round of 32 Predictions
+# 2026 FIFA World Cup — Knockout Predictions (R32 + R16)
 
-*Generated 2026-06-28. Covers all 16 first-knockout-round ("last 32") matches,
-played June 28 – July 3, 2026 across the USA, Mexico and Canada.*
+*Generated 2026-06-28, updated 2026-07-04. Covers all 16 Round-of-32 matches
+(now **played** — with a full model evaluation) and the 8 **Round-of-16**
+matches (upcoming, July 4–7), across the USA, Mexico and Canada.*
+
+> **Jump to:** [R32 predictions](#summary-table--all-16-matches) ·
+> [R32 results & model evaluation](#round-of-32--results--model-evaluation) ·
+> [Round-of-16 predictions](#round-of-16-predictions-improved-model)
 
 Each match reports **who advances** (probability, including extra time +
 penalties) and a **most-likely regulation scoreline** (90 minutes — what "2–1"
@@ -295,6 +300,146 @@ the blended advance probability, the regulation result split, and the scoreline.
 - **Exp. total goals ≈ 2.5** · P(3+)=46% · top scorelines: 1–0 (15%), 2–0 (14%), 1–1 (10%).
 - *Rationale:* Colombia's ELO and ranking edge are sizeable; Ghana qualified as a
   third-placed team and are the weaker side, though dangerous on the break.
+
+---
+
+## Round of 32 — results & model evaluation
+
+The R32 has been played. Grading the predictions above against the **actual
+results** (this is the real-world validation, replacing the pre-tournament 2022
+backtest):
+
+| Match | My pick (p adv) | Result | Pred score | Actual (90′) | Pick ✓ | Score ✓ |
+|---|---|---|---|---|:--:|:--:|
+| Canada v South Africa | Canada 75% | Canada through | 1–0 | **1–0** | ✅ | ✅ |
+| Brazil v Japan | Brazil 73% | Brazil through | 1–0 | 2–1 | ✅ | — |
+| Germany v Paraguay | Germany 85% | **Paraguay** (4–3 pens) | 2–0 | 1–1 | ❌ | — |
+| Netherlands v Morocco | Netherlands 63% | **Morocco** (3–2 pens) | 1–1 | **1–1** | ❌ | ✅ |
+| Mexico v Ecuador | Mexico 69% | Mexico through | 1–0 | 2–0 | ✅ | — |
+| Norway v Ivory Coast | Norway 65% | Norway through | 1–1 | 2–1 | ✅ | — |
+| France v Sweden | France 87% | France through | 2–0 | 3–0 | ✅ | — |
+| USA v Bosnia | USA 85% | USA through | 2–0 | **2–0** | ✅ | ✅ |
+| England v Congo DR | England 90% | England through | 2–0 | 2–1 | ✅ | — |
+| Belgium v Senegal | Belgium 66% | Belgium (3–2 AET) | 1–0 | 1–1 | ✅ | — |
+| Spain v Austria | Spain 87% | Spain through | 2–0 | 3–0 | ✅ | — |
+| Portugal v Croatia | Portugal 65% | Portugal through | 1–0 | 2–1 | ✅ | — |
+| Switzerland v Algeria | Switzerland 73% | Switzerland through | 1–0 | 2–0 | ✅ | — |
+| Egypt v Australia | *coin-flip* (mkt: Egypt) | **Egypt** (4–2 pens) | 1–1 | **1–1** | ⚠️ | ✅ |
+| Argentina v Cape Verde | Argentina 95% | Argentina (3–2 AET) | 2–0 | 2–2 | ✅ | — |
+| Colombia v Ghana | Colombia 79% | Colombia through | 1–0 | **1–0** | ✅ | ✅ |
+
+**Scorecard**
+- **Advancement: 14/16 higher-rated teams went through (88%)**; by the model's
+  *explicit* pick it was **13/16** — the one ⚠️ is Egypt, which I called a 50/50
+  and leaned Australia while the market leaned Egypt (market was right).
+- **Exact 90-minute scoreline: 5/16 = 31%** (Canada 1–0, Netherlands 1–1, USA 2–0,
+  Egypt 1–1, Colombia 1–0) — well above the ~8–12% typical for football models.
+- **Brier score (advance): 0.135** — better than the 0.188 pre-tournament backtest
+  and far better than a coin-flip (0.25). The two upsets (Germany, Netherlands)
+  were exactly the "expect 2–3 favorites to fall" the model warned about.
+
+**Lessons that fed the model update**
+1. *Favorites in the 60–85% band were slightly overconfident* — Germany lost at
+   85%, and Belgium, Argentina, Morocco, Egypt all needed extra time / penalties.
+   Regulation was tighter than modeled.
+2. *Games outscored the modal forecast* (France 3–0, Spain 3–0, Brazil 2–1,
+   Argentina 3–2) — the goal-total prior was a touch low.
+3. *The market beat the ELO/FIFA angle on the lone disagreement* (Egypt).
+
+### What changed for the Round of 16 (improved model)
+
+- **ELO refreshed from actual R32 results** (standard Elo update, K=60, goal-diff
+  multiplier). Biggest risers among survivors: Switzerland +35, Mexico +35, Norway
+  +25, USA +23, Portugal +21, Canada +20, Belgium +19; Argentina barely moved (+3,
+  won as expected). Eliminated teams' ratings drop out.
+- **Market weight raised 0.50 → 0.55** (ELO 0.30→0.28, FIFA 0.20→0.17) — the market
+  earned it on the Egypt call.
+- **Calibration shrink (×0.93 toward 50%)** to correct the observed favorite
+  overconfidence.
+- **Goal-total prior µ raised ~+0.15** to match the higher R32 scoring.
+
+---
+
+## Round of 16 predictions (improved model)
+
+*8 matches, July 4–7. Model & market agree on the favorite in **all eight** this
+round (no direction disagreement like Egypt); four are genuine coin-flips.*
+
+| # | Match | Advances | Prob | Score | Exp. goals (P 3+) | Conf. |
+|---|---|---|---|---|---|---|
+| 1 | Morocco vs Canada | **Morocco** | 69% | 1–0 | 2.4 (43%) | Med |
+| 2 | France vs Paraguay | **France** | 89% | 2–0 | 2.7 (51%) | High |
+| 3 | Brazil vs Norway | **Brazil** | 72% | 1–0 | 2.8 (53%) | Med |
+| 4 | England vs Mexico | **England** | 61% | 1–1 (ENG pens) | 2.5 (46%) | Low |
+| 5 | Spain vs Portugal | **Spain** | 61% | 1–1 (ESP pens) | 2.8 (53%) | Low |
+| 6 | Belgium vs USA | **Belgium** | 56% | 1–1 (BEL pens) | 2.6 (48%) | Low |
+| 7 | Argentina vs Egypt | **Argentina** | 86% | 2–0 | 2.7 (51%) | High |
+| 8 | Colombia vs Switzerland | **Colombia** | 58% | 1–1 (COL pens) | 2.4 (43%) | Low |
+
+**Coin-flip watch:** Belgium–USA (56/44), Colombia–Switzerland (58/42),
+England–Mexico and Spain–Portugal (both 61/39) are the four ties most likely to
+go to extra time or spring an upset. **Tie of the round:** Spain vs Portugal — two
+title contenders meeting far too early.
+
+### R16 per-match detail
+
+Angles = market / ELO (post-R32) / FIFA win prob for the favorite.
+
+**1. Morocco vs Canada — Jul 4**
+| Angle | Market | ELO | FIFA | **Blend** |
+|---|---|---|---|---|
+| Morocco to advance | 69% | 65% | 85% | **69%** |
+- Reg 1X2: Morocco 54% · Draw 26% · Canada 21%. **Score 1–0** (alt 1–1, 2–0). Exp 2.4, P(3+)=43%.
+- *Giant-killers of the Dutch, Morocco carry the quality edge; Canada's co-host energy keeps it a one-goal game.*
+
+**2. France vs Paraguay — Jul 4**
+| Angle | Market | ELO | FIFA | **Blend** |
+|---|---|---|---|---|
+| France to advance | 93% | 88% | 97% | **89%** |
+- Reg 1X2: France 80% · Draw 15% · Paraguay 5%. **Score 2–0** (alt 1–0, 3–0). Exp 2.7, P(3+)=51%.
+- *Paraguay's shock of Germany won't repeat against France's depth; comfortable.*
+
+**3. Brazil vs Norway — Jul 5**
+| Angle | Market | ELO | FIFA | **Blend** |
+|---|---|---|---|---|
+| Brazil to advance | 70% | 73% | 86% | **72%** |
+- Reg 1X2: Brazil 58% · Draw 23% · Norway 19%. **Score 1–0** (alt 1–1, 2–0). Exp 2.8, P(3+)=53%.
+- *Brazil favored, but Haaland gives Norway a real puncher's chance — highest upset ceiling of the "clear" favorites.*
+
+**4. England vs Mexico — Jul 5**
+| Angle | Market | ELO | FIFA | **Blend** |
+|---|---|---|---|---|
+| England to advance | 56% | 69% | 72% | **61%** |
+- Reg 1X2: England 46% · Draw 26% · Mexico 28%. **Score 1–1** → England pens (alt 1–0, 2–1). Exp 2.5, P(3+)=46%.
+- *England the better squad, but Mexico's home crowd + altitude make it a coin-flip that could go the distance.*
+
+**5. Spain vs Portugal — Jul 6 (Arlington, TX)**
+| Angle | Market | ELO | FIFA | **Blend** |
+|---|---|---|---|---|
+| Spain to advance | 66% | 58% | 57% | **61%** |
+- Reg 1X2: Spain 47% · Draw 25% · Portugal 29%. **Score 1–1** → Spain pens (alt 1–0, 2–1). Exp 2.8, P(3+)=53%.
+- *The tie of the round — Euro champions vs Portugal's golden generation. Spain a slight edge; extra time very much in play.*
+
+**6. Belgium vs USA — Jul 6**
+| Angle | Market | ELO | FIFA | **Blend** |
+|---|---|---|---|---|
+| Belgium to advance | 51% | 61% | 66% | **56%** |
+- Reg 1X2: Belgium 40% · Draw 26% · USA 33%. **Score 1–1** → Belgium pens (alt 1–0, 0–1). Exp 2.6, P(3+)=48%.
+- *True toss-up: Belgium's individual quality vs the co-host USA's crowd. The bookies have it near pick'em.*
+
+**7. Argentina vs Egypt — Jul 7 (Atlanta)**
+| Angle | Market | ELO | FIFA | **Blend** |
+|---|---|---|---|---|
+| Argentina to advance | 85% | 92% | 95% | **86%** |
+- Reg 1X2: Argentina 76% · Draw 17% · Egypt 8%. **Score 2–0** (alt 1–0, 3–0). Exp 2.7, P(3+)=51%.
+- *Egypt's shootout luck runs out against the champions' quality; Argentina comfortable.*
+
+**8. Colombia vs Switzerland — Jul 7 (Vancouver)**
+| Angle | Market | ELO | FIFA | **Blend** |
+|---|---|---|---|---|
+| Colombia to advance | 58% | 56% | 64% | **58%** |
+- Reg 1X2: Colombia 41% · Draw 27% · Switzerland 31%. **Score 1–1** → Colombia pens (alt 1–0, 0–1). Exp 2.4, P(3+)=43%.
+- *Two well-drilled, clean-sheet sides; Colombia a slim edge in a cagey, low-scoring tie.*
 
 ---
 
